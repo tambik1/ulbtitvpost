@@ -1,11 +1,15 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import components from './components/UI'
-const app = createApp(App)
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router/router";
+import components from "@/components/UI";
+import directives from "@/directives";
 
-components.forEach(component => {
-    app.component(component.name, component)
-})
-console.log(components)
+const app = createApp(App);
 
-app.mount('#app')
+components.forEach((component) => {
+  app.component(component.name, component);
+});
+directives.forEach((directives) => {
+  app.directive(directives.name, directives);
+});
+app.use(router).mount("#app");
